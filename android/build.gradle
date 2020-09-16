@@ -27,6 +27,11 @@ android {
     defaultConfig {
         minSdkVersion 16
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // Filter for architectures supported by Flutter.
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+        }
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -34,6 +39,6 @@ android {
 }
 
 dependencies {
-    //compile 'com.tencent.bugly:crashreport:latest.release'
-    implementation  files('libs/bugly_crash_release.jar')
+    api 'com.tencent.bugly:crashreport:3.2.1'
+    api 'com.tencent.bugly:nativecrashreport:3.7.0'
 }
